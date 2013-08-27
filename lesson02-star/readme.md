@@ -14,7 +14,7 @@ Star Demo
 
 ### 实现步骤:
 
-1, 实现一个向量类 Vector, 该类有两个属性 x, y <br />
+1, 新建 Vector.js 文件, 实现一个向量类 Vector, 该类有两个属性 x, y <br />
 
 ```javascript
 function Vector(xx, yy)
@@ -22,10 +22,38 @@ function Vector(xx, yy)
   this.x = xx;
   this.y = yy;
 }
-
 ```
 
 
-需要实现在该类里面实现以下方法 <br />
+同时需要实现在该类里面实现以下方法 <br />
 
-plus
+plus 加法,改变当前对象
+```javascript
+Vector.prototype.plus = function(v)
+{
+  this.x += v.x;
+  this.y += v.y;  
+}
+```
+
+minus 减法,改变当前对象
+```javascript
+Vector.prototype.minus = function(v)
+{
+  this.x -= v.x;
+  this.y -= v.y;
+}
+```
+
+rotate 向量旋转，改变当前对象
+```javascript
+Vector.prototype.rotate = function(ang)
+{  
+  var ca = Math.cos (ang);
+  var sa = Math.sin (ang);     
+  var rx = this.x * ca - this.y * sa;
+  var ry = this.x * sa + this.y * ca;
+  this.x = rx;
+  this.y = ry;
+}
+```
