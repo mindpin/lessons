@@ -14,5 +14,18 @@ Star Demo
 
 ### 实现步骤:
 
-1, 实现一个向量类 Vector, 该类有两个属性 x, y, 需要实现在该类里面实现以下方法
+1, 实现一个向量类 Vector, 该类有两个属性 x, y <br />
 
+```javascript
+function Vector(xx, yy)
+{
+  this.x = xx;
+  this.y = yy;
+}
+
+```
+
+
+需要实现在该类里面实现以下方法 <br />
+
+plus
