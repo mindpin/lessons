@@ -166,3 +166,6 @@ Star.prototype.draw = function()
 }
 ```
 
+2, 新建 Demo.js 文件, 用来调用 Vector, Ball 类里面已经实现好的接口 <br />
+
+
