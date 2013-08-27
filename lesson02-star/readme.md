@@ -81,10 +81,88 @@ function Star(x, y, r, n, color)//分别代表x,y,半径，边数，颜色
 }
 ```
 
-首先需要先准备以下几个方法 <br />
+首先, 需要先准备以下几个方法 <br />
 
 randomColor 返回随机颜色 <br />
 die 设计星星的消失条件，同时返回是否已经消失 <br />
 addStar 添加小星星 <br />
 run 改变星星的位置跟移动速度 <br />
+
+其次, 实现两个核心方法 <br />
+
+updata 生成新的星星，或者让半径不断减少的星星消失
+```javascript
+Star.prototype.updata = function()
+{
+  if(!this.big) //如果不是大星星就随着时间增加，半径减少
+  {
+    this.time ++;
+    if(this.time > 10) this.r -= .1;
+  }
+  
+  else//是大星星，就不停的生成小星星
+  {
+    var stars = this.stars;
+    this.addStar();
+    
+    for(var i = 0 ; i < stars.length ; i ++)
+    {
+      stars[i].updata();
+      stars[i].draw();
+      if(stars[i].die())//如果一个小星星死亡，就删掉它
+      {
+        stars.splice(i, 1);
+        i --;
+      }
+      
+    }
+  }
+  
+  this.run();//更新
+}
+```
+
+draw 画出星星移动路径
+```javascript
+Star.prototype.draw = function()
+{  
+  var myCanvas = document.getElementById("main");
+  var g = myCanvas.getContext("2d");
+  
+  var r = this.r;
+  var n = this.n;
+  var color = this.color;
+  var x = this.loc.x;
+  var y = this.loc.y;
+  
+  g.save();  
+  
+  
+  g.beginPath()  
+  g.translate(x,y);
+  this.angle += this.angleV;
+  g.rotate(this.angle);//旋转角度
+  g.moveTo(r,0);  
+  
+  g.fillStyle = color;  
+  g.shadowColor= color; ;
+  
+  for (var i=0;i<n * 2 - 1;i++)//画星星形状
+  {  
+     g.rotate(Math.PI/n);  
+     
+     if(i%2 == 0) 
+     {  
+      g.lineTo((r/0.525731)*0.200811,0);  
+     } 
+     else 
+     {  
+      g.lineTo(r,0);  
+     }
+  }
+  g.closePath();  
+  g.fill();
+  g.restore(); 
+}
+```
 
