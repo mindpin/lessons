@@ -4,6 +4,18 @@ Star Demo
 利用 Javascript 跟 Html5 提供的 API 画出星星在画布移动的效果 <br />
 在 Firefox 或者 Chrome下运行 <br />
 
+
+### 主要用到的 HTML5 相关的 API:
+
+HTML DOM getContext() 方法 <br />
+canvas arc() 方法 <br />
+canvas beginPath() 方法 <br />
+canvas translate() 方法 <br />
+canvas moveTo() 方法 <br />
+HTML DOM rotate() 方法 <br />
+HTML DOM fillRect() 方法 <br />
+
+
 ### 该功能由三个文件组成: 
 
 1, 向量类 Vector.js <br />
@@ -14,7 +26,11 @@ Star Demo
 
 ### 实现步骤:
 
+
 1, 新建 Vector.js 文件, 实现一个向量类 Vector, 该类有两个属性 x, y <br />
+
+**基础类, 主要用来设置坐标位置**
+
 
 ```javascript
 function Vector(xx, yy)

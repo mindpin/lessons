@@ -1,4 +1,4 @@
-﻿var fps = 50;//帧频
+﻿var fps = 5;//帧频
 var num = 1;//大星星数量
 var stars = [];//储存大星星的数组
 
