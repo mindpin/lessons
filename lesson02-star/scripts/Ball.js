@@ -123,21 +123,6 @@ function randomColor()//随机颜色，为了是颜色亮点，各增加了100
 	
 	return ('rgb('+ r +','+ g + ','+  b +')');
 }
-
-Star.prototype.drawBall = function()
-{  
-	var myCanvas = document.getElementById("main");
-	var g = myCanvas.getContext("2d");
-	
-	g.fillStyle = this.color;
-	g.beginPath();
-	g.arc(this.loc.x, this.loc.y, 1, 0, Math.PI*2, true);
-	g.closePath();
-	g.fill();
- }
- 
- 
- 
  
  
  
