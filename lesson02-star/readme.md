@@ -5,6 +5,17 @@ Star Demo
 在 Firefox 或者 Chrome下运行 <br />
 
 
+### 功能说明: 
+
+1, 在一个长方形的画布上的某一个点，会有一个或者多个大星星 <br />
+
+2, 大星星移动时，会同时在移动过的轨道周围生成许多大小不定的小星星 <br />
+
+3, 如果大星星在移动过程中，碰到画布的边线，会从另外一个方向上反弹 <br />
+
+4, 小星星在移动过程中，半径会越来越小，直至消失 <br />
+
+
 ### 主要用到的 HTML5 相关的 API:
 
 HTML DOM getContext() 方法 <br />
@@ -18,8 +29,11 @@ HTML DOM fillRect() 方法 <br />
 
 ### 该功能由三个文件组成: 
 
-1, 向量类 Vector.js <br />
-2, 球类 Ball.js <br/ >
+
+1, 向量类 Vector.js, 主要用来设置坐标位置 <br />
+
+2, 球类 Ball.js, 封装该功能的几个核心方法<br/ >
+
 3, 功能演示 Demo.js <br /> 
 
 
@@ -28,8 +42,6 @@ HTML DOM fillRect() 方法 <br />
 
 
 1, 新建 Vector.js 文件, 实现一个向量类 Vector, 该类有两个属性 x, y <br />
-
-**基础类, 主要用来设置坐标位置**
 
 
 ```javascript
