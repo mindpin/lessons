@@ -80,11 +80,6 @@ Star.prototype.draw = function()
 	
 	g.save();  
 	
-	//g.shadowBlur= 8; 
-	//g.shadowOffsetX = 4; 
-	//g.shadowOffsetY= 4; 
-	
-	
 	
 	g.beginPath()  
 	g.translate(x,y);

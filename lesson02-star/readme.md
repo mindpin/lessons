@@ -57,3 +57,34 @@ Vector.prototype.rotate = function(ang)
   this.y = ry;
 }
 ```
+
+<br />
+
+2, 新建 Ball.js 文件, 主要用来画出星星形状跟移动路线 <br />
+
+先初始化 Star 类型
+```javascript
+function Star(x, y, r, n, color)//分别代表x,y,半径，边数，颜色
+{
+  this.loc = new Vector(x, y);//位置向量
+  this.r = r;
+  this.n = n;
+  this.color = color;
+  this.v = new Vector((Math.random()- .5) * 8, Math.random() * - 5 + 1);//随机速度
+  this.g = new Vector(0, Math.random() * .2 + .1);//随机重力加速度
+  
+  this.angle = Math.random() * 3.14;//随机角度
+  this.angleV = .2; //随机角速度
+  this.time = 0;//时间
+  this.stars = [];//子星星
+  this.big = false;//默认为小星星
+}
+```
+
+首先需要先准备以下几个方法 <br />
+
+randomColor 返回随机颜色 <br />
+die 设计星星的消失条件，同时返回是否已经消失 <br />
+addStar 添加小星星 <br />
+run 改变星星的位置跟移动速度 <br />
+
