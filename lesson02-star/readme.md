@@ -168,4 +168,73 @@ Star.prototype.draw = function()
 
 2, 新建 Demo.js 文件, 用来调用 Vector, Ball 类里面已经实现好的接口 <br />
 
+需要三个全局变量 <br />
+var fps = 50;//帧频 <br />
+var num = 1;//大星星数量 <br />
+var stars = [];//储存大星星的数组 <br />
+
+先准备以下几个方法 <br />
+
+init 初始化一个长方形画布，并准备好相应的星星数据
+
+```javascript
+function init()
+{
+  var myCanvas = document.getElementById("ground");
+  var graphics = myCanvas.getContext("2d");
+  graphics.fillStyle = "#000000";
+  graphics.fillRect(0, 0, 800, 600);//清屏
+  
+  addStar(num);//加大星星
+}
+```
+
+loop 循环，使得星星可以在画布内不断运行
+
+```javascript
+function loop()//循环
+{
+  var myCanvas = document.getElementById("main");
+  var graphics = myCanvas.getContext("2d");
+  
+  var i, l, n, star;
+  graphics.clearRect(0, 0, 800, 600);
+  
+  n = stars.length;//大星星数量
+  
+  for(i = 0 ; i < n ; i ++)
+  {
+    star = stars[i];
+    star.updata();
+    star.draw();
+    
+      
+    if(star.loc.x - star.r< 0 || star.loc.x + star.r> 800) //碰墙反弹
+    {
+      star.loc.minus(star.v);
+      star.v.x *= - .99;
+    }
+    
+    if(star.loc.y + star.r > 600 || star.loc.y - star.r < 0) 
+    {
+      star.loc.minus(star.v);
+      star.v.y *= - .99;
+    }
+  }
+}
+```
+
+<br />
+
+addStar  添加大星星 <br />
+
+main  全局入口函数
+```javascript
+function main()
+{
+  init();
+  setInterval("loop()",1000/fps); 
+}
+```
+
 
