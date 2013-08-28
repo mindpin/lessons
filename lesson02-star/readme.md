@@ -20,13 +20,13 @@ Star Demo
 
 ### 主要用到的 HTML5 相关的 API:
 
-HTML DOM getContext() 方法 <br />
-canvas arc() 方法 <br />
-canvas beginPath() 方法 <br />
-canvas translate() 方法 <br />
-canvas moveTo() 方法 <br />
-HTML DOM rotate() 方法 <br />
-HTML DOM fillRect() 方法 <br />
+[HTML DOM getContext() 方法] http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp <br />
+[canvas arc() 方法] http://www.w3school.com.cn/html5/canvas_arc.asp <br />
+[canvas beginPath() 方法] http://www.w3school.com.cn/html5/canvas_beginpath.asp <br />
+[canvas translate() 方法] http://www.w3school.com.cn/html5/canvas_translate.asp <br />
+[canvas moveTo() 方法] http://www.w3school.com.cn/html5/canvas_moveto.asp <br />
+[HTML DOM rotate() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp <br />
+[HTML DOM fillRect() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp <br />
 
 
 ### 该功能由三个文件组成: 
