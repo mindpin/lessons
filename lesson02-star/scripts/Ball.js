@@ -6,6 +6,7 @@
 	this.color = color;
 	this.v = new Vector((Math.random()- .5) * 8, Math.random() * - 5 + 1);//随机速度
 	this.g = new Vector(0, Math.random() * .2 + .1);//随机重力加速度
+
 	
 	this.angle = Math.random() * 3.14;//随机角度
 	this.angleV = .2; //随机角速度
@@ -32,22 +33,26 @@ Star.prototype.addStar = function()//增加一个小星星
 	this.stars.push(star);
 }
 
-Star.prototype.updata = function()
+Star.prototype.updata = function(star_times = 1, decrease_time = 10)
 {
 	if(!this.big) //如果不是大星星就随着时间增加，半径减少
 	{
 		this.time ++;
-		if(this.time > 10) this.r -= .1;
+		if(this.time > decrease_time) this.r -= .1;
 	}
 	
 	else//是大星星，就不停的生成小星星
 	{
 		var stars = this.stars;
-		this.addStar();
-		
+
+		for (var j = 0; j < star_times; j ++)
+		{
+			this.addStar();
+		}
+
 		for(var i = 0 ; i < stars.length ; i ++)
 		{
-			stars[i].updata();
+			stars[i].updata(star_times, decrease_time);
 			stars[i].draw();
 			if(stars[i].die())//如果一个小星星死亡，就删掉它
 			{

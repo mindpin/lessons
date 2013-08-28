@@ -22,6 +22,7 @@ Vector.prototype.minus = function(v)
 }
 
 
+
 //	----------------rotate------------------------------------------------
 //	向量旋转，改变当前对象
 Vector.prototype.rotate = function(ang)
