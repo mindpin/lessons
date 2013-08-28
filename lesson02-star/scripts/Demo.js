@@ -1,11 +1,15 @@
 ﻿var fps = 50;//帧频
-var num = 2;//大星星数量
+var num = 1;//大星星数量
 var stars = [];//储存大星星的数组
+
+var star_times = 2 // 原有数值是 1, 用于增加小星星数量
+var decrease_times = 20 // 原有数值是 10, 增加小星星停留时间
+var speed_time = 2000 // 原有数值是 1000, 控制星星飞行速度
 
 function main()
 {
 	init();
-	setInterval("loop()",2000/fps);	
+	setInterval("loop()", speed_time/fps);	
 }
 
 function init()
@@ -31,7 +35,7 @@ function loop()//循环
 	for(i = 0 ; i < n ; i ++)
 	{
 		star = stars[i];
-		star.updata();
+		star.updata(star_times, decrease_times);
 		star.draw();
 		
 			

@@ -4,6 +4,8 @@ Star Demo
 利用 Javascript 跟 Html5 提供的 API 画出星星在画布移动的效果 <br />
 在 Firefox 或者 Chrome下运行 <br />
 
+[查看 Demo]: http://mindpin.github.io/lessons/lesson02-star/star.htm  <br />
+
 
 ### 功能说明: 
 
@@ -18,13 +20,15 @@ Star Demo
 
 ### 主要用到的 HTML5 相关的 API:
 
-HTML DOM getContext() 方法 <br />
-canvas arc() 方法 <br />
-canvas beginPath() 方法 <br />
-canvas translate() 方法 <br />
-canvas moveTo() 方法 <br />
-HTML DOM rotate() 方法 <br />
-HTML DOM fillRect() 方法 <br />
+[HTML DOM getContext() 方法] http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp <br />
+[canvas arc() 方法] http://www.w3school.com.cn/html5/canvas_arc.asp <br />
+[canvas beginPath() 方法] http://www.w3school.com.cn/html5/canvas_beginpath.asp <br />
+[canvas translate() 方法] http://www.w3school.com.cn/html5/canvas_translate.asp <br />
+[canvas moveTo() 方法] http://www.w3school.com.cn/html5/canvas_moveto.asp <br />
+[HTML DOM rotate() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp <br />
+[HTML DOM fillRect() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp <br />
+
+
 
 
 ### 该功能由三个文件组成: 
@@ -35,6 +39,15 @@ HTML DOM fillRect() 方法 <br />
 2, 球类 Ball.js, 封装该功能的几个核心方法<br/ >
 
 3, 功能演示 Demo.js <br /> 
+
+
+### 解题思路: 
+
+1, 为了定位星星的位置跟移动速度，为此需要先实现一个基础的向量类 Vector，有X，Y坐标，再通过坐标的相加 (plus方法)，相减 (minus方法) 来控制移动速度跟位置, 同时星星会旋转，为此还需要一个旋转 (rotate 方法)。把这些方法都放在 Vector.js 文件中 <br />
+
+2, 有了星星坐标后，接下来还需要一个星星类 Star, 用来画出星星的形状跟运行轨道, 把这些方法都放在 Ball.js 文件中。 <br />
+
+
 
 
 
@@ -201,9 +214,14 @@ var fps = 50;//帧频 <br />
 var num = 1;//大星星数量 <br />
 var stars = [];//储存大星星的数组 <br />
 
+<br />
+var star_times = 2 // 原有数值是 1, 用于增加小星星数量 <br />
+var decrease_times = 20 // 原有数值是 10, 增加小星星停留时间 <br />
+var speed_time = 2000 // 原有数值是 1000, 控制星星飞行速度 <br />
+
 先准备以下几个方法 <br />
 
-init 初始化一个长方形画布，并准备好相应的星星数据
+init 初始化一个长方形画布，并准备好相应的星星数据 <br />
 
 ```javascript
 function init()
