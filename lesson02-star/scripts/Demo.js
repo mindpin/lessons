@@ -1,11 +1,11 @@
-﻿var fps = 5;//帧频
-var num = 1;//大星星数量
+﻿var fps = 50;//帧频
+var num = 2;//大星星数量
 var stars = [];//储存大星星的数组
 
 function main()
 {
 	init();
-	setInterval("loop()",1000/fps);	
+	setInterval("loop()",2000/fps);	
 }
 
 function init()
