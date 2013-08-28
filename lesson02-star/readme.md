@@ -9,6 +9,8 @@ Star Demo
 
 ### 功能说明: 
 
+[查看 Demo]: http://mindpin.github.io/lessons/lesson02-star/star.htm  <br />
+
 1, 在一个长方形的画布上的某一个点，会有一个或者多个大星星 <br />
 
 2, 大星星移动时，会同时在移动过的轨道周围生成许多大小不定的小星星 <br />
@@ -27,8 +29,11 @@ Star Demo
 [canvas moveTo() 方法] http://www.w3school.com.cn/html5/canvas_moveto.asp <br />
 [HTML DOM rotate() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp <br />
 [HTML DOM fillRect() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp <br />
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 
 
 ### 该功能由三个文件组成: 
