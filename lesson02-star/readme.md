@@ -46,6 +46,13 @@ Star Demo
 1, 为了定位星星的位置跟移动速度，为此需要先实现一个基础的向量类 Vector，有X，Y坐标，再通过坐标的相加 (plus方法)，相减 (minus方法) 来控制移动速度跟位置, 同时星星会旋转，为此还需要一个旋转 (rotate 方法)。把这些方法都放在 Vector.js 文件中 <br />
 
 2, 有了星星坐标后，接下来还需要一个星星类 Star, 用来画出星星的形状跟运行轨道, 把这些方法都放在 Ball.js 文件中。 <br />
+Star 方法, 用来画出星星 <br />
+
+updata 方法, 通过大星星来不断生成小星星, 同时小星星的半径在运动中会不断减少，直至消亡, 同时不断更新星星的vector坐标，使得星星看起来是在做高速移动 <br />
+
+draw 方法, 这里会用到很多 HTML5 的方法来画出星星的移动轨道 <br />
+
+3, 当核心功能都实现好后，最后就是在 Demo.js 这个文件中调用上面封装好的方法
 
 
 
@@ -125,30 +132,78 @@ function Star(x, y, r, n, color)//分别代表x,y,半径，边数，颜色
 首先, 需要先准备以下几个方法 <br />
 
 randomColor 返回随机颜色 <br />
+```javascript
+function randomColor()//随机颜色，为了是颜色亮点，各增加了100
+{
+  var r,g,b;
+  
+  r = parseInt(Math.random() * 255) + 100;
+  g = parseInt(Math.random() * 255) + 100;
+  b = parseInt(Math.random() * 255) + 100;  
+  
+  return ('rgb('+ r +','+ g + ','+  b +')');
+}
+```
+
 die 设计星星的消失条件，同时返回是否已经消失 <br />
+```javascript
+Star.prototype.die = function()//死亡条件
+{
+  if(this.r < 1 || this.loc.x > 800 || this.loc.x < 0 || this.loc.y > 600 || this.loc.y < 0) return true;
+  else return false;
+}
+```
+
 addStar 添加小星星 <br />
+```javascript
+Star.prototype.addStar = function()//增加一个小星星
+{
+  var x, y, r, n, color;
+  x = this.loc.x;
+  y = this.loc.y;
+  r = Math.random() * 4 + 1;
+  n = parseInt(Math.random() * 4) + 3;
+  color = randomColor();
+  var star = new Star(x, y, r, n, color);
+  this.stars.push(star);
+}
+```
+
 run 改变星星的位置跟移动速度 <br />
+```javascript
+Star.prototype.run = function()
+{
+  this.loc.plus(this.v);//更新位置
+  this.v.plus(this.g);//更新速度
+}
+```
+
+
 
 其次, 实现两个核心方法 <br />
 
 updata 生成新的星星，或者让半径不断减少的星星消失
 ```javascript
-Star.prototype.updata = function()
+Star.prototype.updata = function(star_times = 1, decrease_time = 10)
 {
   if(!this.big) //如果不是大星星就随着时间增加，半径减少
   {
     this.time ++;
-    if(this.time > 10) this.r -= .1;
+    if(this.time > decrease_time) this.r -= .1;
   }
   
   else//是大星星，就不停的生成小星星
   {
     var stars = this.stars;
-    this.addStar();
-    
+
+    for (var j = 0; j < star_times; j ++)
+    {
+      this.addStar();
+    }
+
     for(var i = 0 ; i < stars.length ; i ++)
     {
-      stars[i].updata();
+      stars[i].updata(star_times, decrease_time);
       stars[i].draw();
       if(stars[i].die())//如果一个小星星死亡，就删掉它
       {
@@ -204,7 +259,7 @@ Star.prototype.draw = function()
   g.closePath();  
   g.fill();
   g.restore(); 
-}
+}  
 ```
 
 2, 新建 Demo.js 文件, 用来调用 Vector, Ball 类里面已经实现好的接口 <br />
@@ -251,7 +306,7 @@ function loop()//循环
   for(i = 0 ; i < n ; i ++)
   {
     star = stars[i];
-    star.updata();
+    star.updata(star_times, decrease_times);
     star.draw();
     
       
