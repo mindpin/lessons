@@ -29,11 +29,6 @@ Star Demo
 [canvas moveTo() 方法] http://www.w3school.com.cn/html5/canvas_moveto.asp <br />
 [HTML DOM rotate() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp <br />
 [HTML DOM fillRect() 方法] http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp <br />
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 
 
 ### 该功能由三个文件组成: 
