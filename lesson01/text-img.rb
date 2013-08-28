@@ -18,7 +18,7 @@ def img_init(str,width,height,img_name)
   gc.stroke('transparent')
   gc.pointsize(24)
 
-  gc.font("luxirbi.ttf")  
+  gc.font("Hei.ttf")  
   gc.text(20,40, str)  
 
   gc.draw(img)
