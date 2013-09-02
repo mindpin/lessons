@@ -182,8 +182,16 @@ Star.prototype.run = function()
 
 updata 生成新的星星，或者让半径不断减少的星星消失
 ```javascript
-Star.prototype.updata = function(star_times = 1, decrease_time = 10)
+Star.prototype.updata = function(star_times, decrease_time)
 {
+  if (star_times == null) {
+    star_times = 1
+  }
+
+  if (decrease_time == null) {
+    decrease_time = 10
+  }
+
   if(!this.big) //如果不是大星星就随着时间增加，半径减少
   {
     this.time ++;
