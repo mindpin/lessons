@@ -33,8 +33,16 @@ Star.prototype.addStar = function()//增加一个小星星
 	this.stars.push(star);
 }
 
-Star.prototype.updata = function(star_times = 1, decrease_time = 10)
+Star.prototype.updata = function(star_times, decrease_time)
 {
+	if (star_times == null) {
+		star_times = 1
+	}
+
+	if (decrease_time == null) {
+		decrease_time = 10
+	}
+
 	if(!this.big) //如果不是大星星就随着时间增加，半径减少
 	{
 		this.time ++;
