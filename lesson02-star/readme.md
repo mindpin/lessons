@@ -1,49 +1,49 @@
 Star Demo
 ===================================  
 
-利用 Javascript 跟 Html5 提供的 API 画出星星在画布移动的效果
+利用 Html5 提供的 Canvas API 实现星星移动的动态效果
 
-在 Firefox 或者 Chrome下运行
+[查看DEMO的最终效果](http://mindpin.github.io/lessons/lesson02-star/star.htm) (DEMO支持在 Firefox 或者 Chrome下运行)
 
-[查看 Demo](http://mindpin.github.io/lessons/lesson02-star/star.htm)
+
 
 
 ## 功能说明: 
 
-1, 在一个长方形的画布上的某一个点，会有一个或者多个大星星
+1. 在一个长方形的画布会有一个大星星
 
-2, 大星星移动时，会同时在移动过的轨道周围生成许多大小不定的小星星
+2. 大星星移动时，会同时在移动过的轨道周围生成许多大小不定的小星星
 
-3, 如果大星星在移动过程中，碰到画布的边线，会从另外一个方向上反弹
+3. 如果大星星在移动过程中，碰到画布的边线，会从另外一个方向上反弹
 
-4, 小星星在移动过程中，半径会越来越小，直至消失
+4. 小星星在移动过程中，半径会越来越小，直至消失
 
 
-## 主要用到的 HTML5 相关的 API:
+## 主要用到的 Canvas 相关的 API:
 
-[HTML DOM getContext() 方法](http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp)
+* [HTML DOM getContext() 方法](http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp)
 
-[canvas arc() 方法](http://www.w3school.com.cn/html5/canvas_arc.asp)
+* [canvas arc() 方法](http://www.w3school.com.cn/html5/canvas_arc.asp)
 
-[canvas beginPath() 方法](http://www.w3school.com.cn/html5/canvas_beginpath.asp)
+* [canvas beginPath() 方法](http://www.w3school.com.cn/html5/canvas_beginpath.asp)
 
-[canvas translate() 方法](http://www.w3school.com.cn/html5/canvas_translate.asp)
+* [canvas translate() 方法](http://www.w3school.com.cn/html5/canvas_translate.asp)
 
-[canvas moveTo() 方法](http://www.w3school.com.cn/html5/canvas_moveto.asp)
+* [canvas moveTo() 方法](http://www.w3school.com.cn/html5/canvas_moveto.asp)
 
-[HTML DOM rotate() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp)
+* [HTML DOM rotate() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp)
 
-[HTML DOM fillRect() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp)
+* [HTML DOM fillRect() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp)
 
 
 ## 该功能由三个文件组成: 
 
 
-1, 向量类 Vector.js, 主要用来设置坐标位置
+1. 向量类 Vector.js, 主要用来设置坐标位置
 
-2, 球类 Ball.js, 封装该功能的几个核心方法
+2. 球类 Ball.js, 封装该功能的几个核心方法
 
-3, 功能演示 Demo.js
+3. 功能演示 Demo.js
 
 
 ## 解题思路: 
@@ -52,16 +52,13 @@ Star Demo
 
 2, 有了星星坐标后，接下来还需要一个星星类 Star, 用来画出星星的形状跟运行轨道, 把这些方法都放在 Ball.js 文件中。
 
-Star 方法, 用来画出星星
+* Star 方法, 用来画出星星
 
-updata 方法, 通过大星星来不断生成小星星, 同时小星星的半径在运动中会不断减少，直至消亡, 同时不断更新星星的vector坐标，使得星星看起来是在做高速移动
+* updata 方法, 通过大星星来不断生成小星星, 同时小星星的半径在运动中会不断减少，直至消亡, 同时不断更新星星的vector坐标，使得星星看起来是在做高速移动
 
-draw 方法, 这里会用到很多 HTML5 的方法来画出星星的移动轨道
+* draw 方法, 这里会用到很多 Canvas 的方法来画出星星的移动轨道
 
 3, 当核心功能都实现好后，最后就是在 Demo.js 这个文件中调用上面封装好的方法
-
-
-
 
 
 ## 实现步骤:
@@ -77,7 +74,7 @@ function Vector(xx, yy)
 }
 ```
 
-同时需要实现在该类里面实现以下方法
+同时需要在该类里面实现以下方法
 
 plus 加法,改变当前对象
 
@@ -280,7 +277,7 @@ Star.prototype.draw = function()
 }  
 ```
 
-2, 新建 Demo.js 文件, 用来调用 Vector, Ball 类里面已经实现好的接口
+3, 新建 Demo.js 文件, 用来调用 Vector, Ball 类里面已经实现好的接口
 
 需要三个全局变量
 
@@ -311,7 +308,7 @@ function init()
 }
 ```
 
-loop 循环，使得星星可以在画布内不断运行
+loop 方法，该方法每运行一次，星星的位置就会重新计算一次，并刷新一次画布
 
 ```javascript
 function loop()//循环
@@ -354,8 +351,9 @@ main  全局入口函数
 function main()
 {
   init();
+  // 每 1000/fps 毫秒就会运行一次 loop 方法
+  // 也就是说 1000 毫秒会运行 fps 次 loop 方法
+  // 所以画布的帧数就是  fps
   setInterval("loop()",1000/fps); 
 }
 ```
-
-
