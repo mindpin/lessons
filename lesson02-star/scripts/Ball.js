@@ -120,6 +120,21 @@ Star.prototype.draw = function()
 	g.fill();
 	g.restore(); 
 }  
+
+Star.prototype.impact = function()
+{
+	if(this.loc.x - this.r< 0 || this.loc.x + this.r> 800) //碰墙反弹
+	{
+		this.loc.minus(this.v);
+		this.v.x *= - .99;
+	}
+	
+	if(this.loc.y + this.r > 600 || this.loc.y - this.r < 0) 
+	{
+		this.loc.minus(this.v);
+		this.v.y *= - .99;
+	}
+}
  
 function randomColor()//随机颜色，为了是颜色亮点，各增加了100
 {

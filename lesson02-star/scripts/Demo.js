@@ -38,18 +38,8 @@ function loop()//循环
 		star.updata(star_times, decrease_times);
 		star.draw();
 		
-			
-		if(star.loc.x - star.r< 0 || star.loc.x + star.r> 800) //碰墙反弹
-		{
-			star.loc.minus(star.v);
-			star.v.x *= - .99;
-		}
-		
-		if(star.loc.y + star.r > 600 || star.loc.y - star.r < 0) 
-		{
-			star.loc.minus(star.v);
-			star.v.y *= - .99;
-		}
+		// 球反弹
+	  star.impact();
 	}
 }
 
