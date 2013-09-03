@@ -1,7 +1,7 @@
 Star Demo
 ===================================  
 
-利用 Javascript 跟 Html5 提供的 API 画出星星在画布移动的效果 <br />
+利用 Javascript 跟 Html5 提供的 API 画出星星在画布移动的效果
 在 Firefox 或者 Chrome下运行 <br />
 
 [查看 Demo]: http://mindpin.github.io/lessons/lesson02-star/star.htm  <br />
