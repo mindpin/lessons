@@ -5,7 +5,7 @@ Star Demo
 
 在 Firefox 或者 Chrome下运行
 
-[查看 Demo]: http://mindpin.github.io/lessons/lesson02-star/star.htm
+[查看 Demo](http://mindpin.github.io/lessons/lesson02-star/star.htm)
 
 
 ## 功能说明: 
@@ -21,19 +21,19 @@ Star Demo
 
 ## 主要用到的 HTML5 相关的 API:
 
-[HTML DOM getContext() 方法]: http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp
+[HTML DOM getContext() 方法](http://www.w3school.com.cn/htmldom/met_canvas_getcontext.asp)
 
-[canvas arc() 方法]: http://www.w3school.com.cn/html5/canvas_arc.asp
+[canvas arc() 方法](http://www.w3school.com.cn/html5/canvas_arc.asp)
 
-[canvas beginPath() 方法]: http://www.w3school.com.cn/html5/canvas_beginpath.asp
+[canvas beginPath() 方法](http://www.w3school.com.cn/html5/canvas_beginpath.asp)
 
-[canvas translate() 方法]: http://www.w3school.com.cn/html5/canvas_translate.asp
+[canvas translate() 方法](http://www.w3school.com.cn/html5/canvas_translate.asp)
 
-[canvas moveTo() 方法]: http://www.w3school.com.cn/html5/canvas_moveto.asp
+[canvas moveTo() 方法](http://www.w3school.com.cn/html5/canvas_moveto.asp)
 
-[HTML DOM rotate() 方法]: http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp
+[HTML DOM rotate() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_rotate.asp)
 
-[HTML DOM fillRect() 方法]: http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp
+[HTML DOM fillRect() 方法](http://www.w3school.com.cn/htmldom/met_canvasrenderingcontext2d_fillrect.asp)
 
 
 ## 该功能由三个文件组成: 
